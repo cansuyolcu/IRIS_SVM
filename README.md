@@ -52,7 +52,64 @@ sns.kdeplot(setosa['sepal_width'], setosa['sepal_length'],
                  cmap="plasma", shade=True, shade_lowest=False)
 ```
 
-<img src= "https://user-images.githubusercontent.com/66487971/88688249-cb0caf00-d101-11ea-9f88-d0bb2521d325.png" width = 700>
+<img src= "https://user-images.githubusercontent.com/66487971/88688249-cb0caf00-d101-11ea-9f88-d0bb2521d325.png" width = 500>
 
 ## Train Test Split
+
+```python
+from sklearn.model_selection import train_test_split
+X= iris.drop('species',axis=1)
+y=iris['species']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
+```
+# Model Evaluation
+
+```python
+predictions = svc_model.predict(X_test)
+from sklearn.metrics import classification_report,confusion_matrix
+print(confusion_matrix(y_test,predictions))
+```
+
+<img src= "https://user-images.githubusercontent.com/66487971/88688774-60a83e80-d102-11ea-9d2c-18be2820b309.png" width = 150>
+
+
+```python
+
+print(classification_report(y_test,predictions))
+
+```
+
+<img src= "https://user-images.githubusercontent.com/66487971/88688877-7c134980-d102-11ea-8319-92a98f94ea9c.png" width = 500>
+
+It looks like it predicted all of them correctly.But I want to check it with GridSearch too.
+
+```python
+from sklearn.model_selection import GridSearchCV
+param_grid = {'C': [0.1,1, 10, 100], 'gamma': [1,0.1,0.01,0.001]} 
+grid = GridSearchCV(SVC(),param_grid,refit=True,verbose=2)
+grid.fit(X_train,y_train)
+```
+
+<img src= "https://user-images.githubusercontent.com/66487971/88689249-f04ded00-d102-11ea-9b7b-064d1129868f.png" width = 1500>
+
+```python
+grid_predictions = grid.predict(X_test)
+print(confusion_matrix(y_test,grid_predictions))
+
+<img src= "https://user-images.githubusercontent.com/66487971/88689476-2f7c3e00-d103-11ea-825d-cdc7d1ce6b2b.png" width = 150>
+
+```python
+print(classification_report(y_test,grid_predictions))
+```
+
+<img src= "hhttps://user-images.githubusercontent.com/66487971/88689614-5dfa1900-d103-11ea-8722-f34eb537cdb7.png" width = 500>
+
+I still got 100% accuracy. I do not believe I overfit it anywhere so this was a success.
+
+## This concludes my project here. Thanks for reading all the way through.
+
+
+
+
+
 
