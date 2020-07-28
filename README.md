@@ -96,6 +96,8 @@ grid.fit(X_train,y_train)
 grid_predictions = grid.predict(X_test)
 print(confusion_matrix(y_test,grid_predictions))
 
+```
+
 <img src= "https://user-images.githubusercontent.com/66487971/88689476-2f7c3e00-d103-11ea-825d-cdc7d1ce6b2b.png" width = 150>
 
 ```python
