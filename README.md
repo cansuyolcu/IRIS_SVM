@@ -106,8 +106,7 @@ print(classification_report(y_test,grid_predictions))
 
 <img src= "https://user-images.githubusercontent.com/66487971/88688877-7c134980-d102-11ea-8319-92a98f94ea9c.png" width = 500>
 
-I still got 100% accuracy. I do not believe I overfit it anywhere so this was a success.
-
+I still got 100% accuracy. 
 ## This concludes my project here. Thanks for reading all the way through.
 
 
